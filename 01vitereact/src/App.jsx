@@ -1,10 +1,14 @@
-
+import Chai from "./chai"
 
 function App() {
-
+  const username = "SamJi"
 
   return (
-    <h1>Chai aur React with Vite | Sam</h1>
+    <>
+    <h1>Sam</h1>
+    <Chai />
+    <p>Para {username} </p>
+    </>
   )
 }
 
