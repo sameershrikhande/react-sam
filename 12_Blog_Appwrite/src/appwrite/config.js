@@ -28,12 +28,13 @@ export class Service{
 
     async updatePost(slug, {title, content, featuredImage, status}){
         try {
-            return await this.databases.updateDocument(appwriteDatabaseId, appwriteCollectionId, slug,
+            return await this.databases.updateDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug,
             {
                 title, content, featuredImage, status, 
             })
         } catch (error) {
-            console.log("Appwrite Service :: updatePost :: error ");
+            console.error("Appwrite Service :: updatePost :: error", error.message);
+            throw error;
         }
     }
 
@@ -45,7 +46,8 @@ export class Service{
                 slug)
             return true
         } catch (error) {
-            console.log("Appwrite Service :: deletePost :: error", error);
+            console.log("Appwrite Service :: deletePost :: error", error.message);
+            throw error;
             return false
         }
     }
